@@ -1,4 +1,4 @@
-// Decemeber 25, 2023
+// December 25, 2023
 
 class Solution {
 public:
