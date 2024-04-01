@@ -1,4 +1,4 @@
-# grind
+# gym
 
 Included are the following:
 
