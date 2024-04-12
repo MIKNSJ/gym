@@ -1,0 +1,3 @@
+.vscode/settings.json
+env/leet_env/*.exe
+env/leet_env/*.o
