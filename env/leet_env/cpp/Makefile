@@ -2,7 +2,7 @@ COMP=g++
 FLAGS?=-g -Wall -pedantic -Wextra -static-libstdc++
 
 all:
-	$(COMP) $(FLAGS) -o sol Solution.cpp
+	$(COMP) $(FLAGS) Node.cpp -o sol Solution.cpp
 
 clean:
 	rm *.o

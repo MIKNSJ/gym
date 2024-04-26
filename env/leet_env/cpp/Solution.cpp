@@ -1,6 +1,7 @@
 // Date: YYYY-MM-DD
 
 #include "Solution.hpp"
+#include "Node.hpp"
 
 
 
