@@ -1,9 +1,9 @@
 COMP=g++
-FLAGS?=-g -Wall -pedantic -Wextra -static-libstdc++
+FLAGS=-g -Wall -pedantic -Wextra -static-libstdc++
 
 all:
 	$(COMP) $(FLAGS) Node.cpp -o sol Solution.cpp
 
 clean:
-	rm *.o
+	# rm *.o
 	# del *.o, if windows
