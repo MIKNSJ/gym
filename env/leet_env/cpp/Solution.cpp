@@ -8,16 +8,6 @@
 class Solution {
     public:
         /**
-         * Test function, DELETE WHEN EDITING
-         * @return nothing
-        */
-        void leet() {
-            cout << "This is Leetcode!" << endl;
-        }
-
-
-
-        /**
          * TODO: Replace this line(s) with the description of the function
          * to be implemented.
          * @param
@@ -35,8 +25,6 @@ class Solution {
 */
 int main() {
     Solution solution;
-    solution.leet(); // calling test function, DELETE WHEN EDITING
-
     // TODO: Replace with the implemented function call.
 
     return 0;
