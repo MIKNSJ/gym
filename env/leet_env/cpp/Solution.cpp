@@ -24,7 +24,7 @@ class Solution {
  * @return If main() ran succesfully return 0, otherwise 1.
 */
 int main() {
-    Solution solution;
+    // TODO: Uncomment this line "Solution solution;"
     // TODO: Replace with the implemented function call.
 
     return 0;

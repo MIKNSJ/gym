@@ -60,3 +60,36 @@ void printTree(TreeNode* root) {
         cout << endl; // Move to the next level
     }
 }
+
+
+
+void printArray(vector<int> &arr) {
+    cout << "[" << endl;
+    for (int i = 0; i < (int)arr.size(); i++) {
+        cout << arr[i];
+        if (i + 1 < (int)arr.size()) {
+            cout << ", ";
+        }
+    }
+    cout << "]" << endl;
+}
+
+
+
+void print2DArray(vector<vector<int>> &arr) {
+    cout << "[" << endl;
+    for (int i = 0; i < (int)arr.size(); i++) {
+        cout << "[" << endl;
+        for (int j = 0; j < (int)arr[i].size(); j++) {
+            cout << arr[i][j];
+            if (j + 1 < (int)arr[i].size()) {
+                cout << ", " << endl;
+            }
+        }
+        cout << "]" << endl;
+        if (i + 1 < (int)arr.size()) {
+            cout << ", ";
+        }
+    }
+    cout << "]" << endl;
+}
