@@ -1,10 +1,10 @@
 # YYYY-MM-DD
 
-import array
-import bisect
-import math
-import collections
-import sortedcontainers
+# import array
+# import bisect
+# import math
+# import collections
+# import sortedcontainers
 
 
 
@@ -16,6 +16,10 @@ class ListNode:
 
 # Prints out the list
 def print_list(head: ListNode) -> None:
+    if not head:
+        print ("[]")
+        return
+
     current = head
     while current:
         print(current.val, end=" -> " if current.next else "\n")
@@ -33,30 +37,21 @@ class TreeNode:
 # Prints out the tree
 def print_tree(root: TreeNode) -> None:
     if not root:
+        print("[]")
         return
-    
-    queue = collections.deque([(root, 0)])  # (node, level)
-    current_level = 0
-    level_nodes = []
-    
+
+    queue = [root]
+
     while queue:
-        node, level = queue.popleft()
-        
-        if level != current_level:
-            print(' '.join(map(str, level_nodes)))
-            current_level = level
-            level_nodes = []
-        
-        level_nodes.append(node.val)
-        
-        if node.left:
-            queue.append((node.left, level + 1))
-        if node.right:
-            queue.append((node.right, level + 1))
-    
-    # Print the last level
-    if level_nodes:
-        print(' '.join(map(str, level_nodes)))
+        level_size = len(queue)
+        for _ in range(level_size):
+            node = queue.pop(0)
+            print(node.val, end=" ")
+            if node.left:
+                queue.append(node.left)
+            if node.right:
+                queue.append(node.right)
+        print()  # Print newline after each level
 
 
 
