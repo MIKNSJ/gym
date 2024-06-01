@@ -93,3 +93,15 @@ void print2DArray(vector<vector<int>> &arr) {
     }
     cout << "]" << endl;
 }
+
+
+
+// Definition of Interval:
+class Interval {
+    public:
+        int start, end;
+        Interval(int start, int end) {
+            this->start = start;
+            this->end = end;
+        }
+};
