@@ -25,7 +25,7 @@ struct ListNode {
     ListNode(int x, ListNode *next);
 };
 
-
+void addListNodes(ListNode* &head, vector<int> newListNodes);
 
 // Definition for a binary tree node.
 struct TreeNode {

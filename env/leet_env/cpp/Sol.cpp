@@ -30,6 +30,20 @@ class ListNode {
     ListNode(int x) : val(x), next(nullptr) {}
     ListNode(int x, ListNode *next) : val(x), next(next) {}
 
+    void addListNodes(ListNode* &head, vector<int> addListNodes) {
+        ListNode* curr = head;
+    
+        for (int i = 0; i < (int)addListNodes.size(); i++) {
+            ListNode* newNode = new ListNode(addListNodes[i]);
+            curr->next = newNode;
+            curr = curr->next;
+        }
+    
+        ListNode* oldHead = head;
+        head = head->next;
+        delete(oldHead);
+    }
+
     void printList(ListNode* head) {
         ListNode* current = head;
         cout << "[";

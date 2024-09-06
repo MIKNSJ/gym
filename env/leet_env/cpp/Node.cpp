@@ -8,6 +8,21 @@
 ListNode::ListNode() : val(0), next(nullptr) {}
 ListNode::ListNode(int x) : val(x), next(nullptr) {}
 ListNode::ListNode(int x, ListNode *next) : val(x), next(next) {}
+
+void addListNodes(ListNode* &head, vector<int> addListNodes) {
+    ListNode* curr = head;
+
+    for (int i = 0; i < (int)addListNodes.size(); i++) {
+        ListNode* newNode = new ListNode(addListNodes[i]);
+        curr->next = newNode;
+        curr = curr->next;
+    }
+
+    ListNode* oldHead = head;
+    head = head->next;
+    delete(oldHead);
+}
+
 void printList(ListNode* head) {
     ListNode* current = head;
     cout << "[";
@@ -93,15 +108,3 @@ void print2DArray(vector<vector<int>> &arr) {
     }
     cout << "]" << endl;
 }
-
-
-
-// Definition of Interval:
-class Interval {
-    public:
-        int start, end;
-        Interval(int start, int end) {
-            this->start = start;
-            this->end = end;
-        }
-};
