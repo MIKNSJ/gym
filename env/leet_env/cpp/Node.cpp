@@ -79,7 +79,7 @@ void printTree(TreeNode* root) {
 
 
 void printArray(vector<int> &arr) {
-    cout << "[" << endl;
+    cout << "[";
     for (int i = 0; i < (int)arr.size(); i++) {
         cout << arr[i];
         if (i + 1 < (int)arr.size()) {
@@ -92,7 +92,7 @@ void printArray(vector<int> &arr) {
 
 
 void print2DArray(vector<vector<int>> &arr) {
-    cout << "[" << endl;
+    cout << "[";
     for (int i = 0; i < (int)arr.size(); i++) {
         cout << "[" << endl;
         for (int j = 0; j < (int)arr[i].size(); j++) {
