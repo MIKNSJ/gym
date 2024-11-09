@@ -1,7 +1,7 @@
 # =================================================================================================================== #
 #                                                                                                                     |
 #     LeetEnv                                                                                                         |
-#     Version 1.0                                                                                                     |
+#     Version 1.1                                                                                                     |
 #     Test LeetCode problems from your editor!                                                                        |
 #                                                                                                                     |
 #                                                                                                                     |
@@ -23,7 +23,7 @@
 # import math
 # import collections
 # import sortedcontainers
-from typing import Optional
+from typing import Optional, List
 #
 #
 #
@@ -38,36 +38,45 @@ from typing import Optional
 # ========== SINGLY LINKED LIST ===================================================================================== #
 class ListNode:
     # SET UP A LIST NODE OBJECT
-    def __init__(self, val: int, next: Optional["ListNode"] = None, sequence: Optional[list[int]] = None) -> None:
-        self.val = val
-        self.next = next
+    def __init__(self, val: Optional[int] = None, next: Optional["ListNode"] = None, nodes: Optional[List[int]] = None) -> None:
+        if val == None and nodes == None:
+            self.val = 0
+            self.next = next
 
-        if (sequence != None):
-            curr = self
-            for i in range(len(sequence)):
-                curr.next = ListNode(val=sequence[i])
-                curr = curr.next
+        elif val != None and nodes == None:
+            self.val = val
+            self.next = next
+
+        else:
+            self.val = nodes[0]
+            self.next = next
+
+            if (nodes != None):
+                curr = self
+                for i in range(1, len(nodes)):
+                    curr.next = ListNode(val=nodes[i])
+                    curr = curr.next
 
 
-    # PRINTS OUT THE SINGLY LINKED LIST
-    def printListNodes(self) -> None:
-        size = 0
-    
-        if not self:
-            print(f'[]\nSize: {size}')
-            return
-    
-        current = self
-        while current:
-            if (current.next != None):
-                print(f'[{current.val}]', end=" -> ")
-            else:
-                print(f'[{current.val}]')
-    
-            current = current.next
-            size+=1
-    
-        print(f'Size: {size}')
+# PRINTS OUT THE SINGLY LINKED LIST
+def printList(head) -> None:
+    size = 0
+
+    if head == None:
+        print(f'[]\nSize: {size}')
+        return
+
+    current = head
+    while current:
+        if (current.next != None):
+            print(f'[{current.val}]', end=" -> ")
+        else:
+            print(f'[{current.val}]')
+
+        current = current.next
+        size+=1
+
+    print(f'Size: {size}')
 # ========== END OF SINGLY LINKED LIST ============================================================================== #
 #X
 #X
@@ -75,70 +84,82 @@ class ListNode:
 # ========== TREES ================================================================================================== #
 class TreeNode:
     # SET UP A TREE NODE OBJECT
-    def __init__(self, val: int, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None, sequence: Optional[list[Optional[int]]] = None) -> None:
-        self.val = val
-        self.left = left
-        self.right = right
+    def __init__(self, val: Optional[int], left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None, nodes: Optional[List[Optional[int]]] = None) -> None:
+        if val == None and nodes == None:
+            self.val = 0
+            self.left = left
+            self.right = right
 
-        if (sequence != None):
-            queue = []
-            queue.append(self)
+        elif val != None and nodes == None:
+            self.val = val
+            self.left = left
+            self.right = right
 
-            while queue:
-                if (len(sequence) == 0):
-                    break
+        else:
+            self.val = nodes[0]
+            self.left = left
+            self.right = right
 
-                current = queue.pop(0)
+            if (nodes != None):
+                queue = []
+                queue.append(self)
+                nodes.pop(0)
 
-                leftChildVal = sequence.pop(0)
-                if (leftChildVal != None):
-                    current.left = TreeNode(leftChildVal)
-                    queue.append(current.left)
+                while queue:
+                    if (len(nodes) == 0):
+                        break
 
-                rightChildVal = sequence.pop(0)
-                if (rightChildVal != None):
-                    current.right = TreeNode(rightChildVal)
-                    queue.append(current.right)
+                    current = queue.pop(0)
+
+                    leftChildVal = nodes.pop(0)
+                    if (leftChildVal != None):
+                        current.left = TreeNode(leftChildVal)
+                        queue.append(current.left)
+
+                    rightChildVal = nodes.pop(0)
+                    if (rightChildVal != None):
+                        current.right = TreeNode(rightChildVal)
+                        queue.append(current.right)
 
 
-    # PRINTS OUT THE TREE
-    def printTreeNodes(self) -> None:
-        size = 0
+# PRINTS OUT THE TREE
+def printTree(root) -> None:
+    size = 0
+
+    if root == None:
+        print(f'[]\nSize: {size}')
+        return
+
+    tree = []
+    tree.append(root.val)
+    queue = []
+    queue.append(root)
+    size+=1
+
+    while queue:
+        current = queue.pop(0)
+
+        if (current.left):
+            queue.append(current.left)
+            tree.append(current.left.val)
+            size+=1
+        else:
+            tree.append(None)
+
+        if (current.right):
+            queue.append(current.right)
+            tree.append(current.right.val)
+            size+=1
+        else:
+            tree.append(None)
     
-        if not self:
-            print(f'[]\nSize: {size}')
-            return
-    
-        tree = []
-        tree.append(self.val)
-        queue = []
-        queue.append(self)
-        size+=1
-    
-        while queue:
-            current = queue.pop(0)
+    for i in range(len(tree) - 1, -1, -1):
+        if (tree[i] == None):
+            tree.pop(i)
+        else:
+            break
 
-            if (current.left):
-                queue.append(current.left)
-                tree.append(current.left.val)
-                size+=1
-            else:
-                tree.append(None)
-
-            if (current.right):
-                queue.append(current.right)
-                tree.append(current.right.val)
-                size+=1
-            else:
-                tree.append(None)
-        
-        for i in range(len(tree) - 1, -1, -1):
-            if (tree[i] == None):
-                tree.pop(i)
-            else:
-                break
-
-        print(f'{tree}\nSize: {size}')
+    print(f'{tree}\nSize: {size}')
 # ========== END OF TREES =========================================================================================== #
 #X
 #X
@@ -146,14 +167,14 @@ class TreeNode:
 # ========== INTERVALS ============================================================================================== #
 # SET UP A INTERVAL OBJECT:
 class Interval:
-    def __init__(self, start: int, end: int):
+    def __init__(self, start: int, end: int) -> None:
         self.start = start
         self.end = end
 
 
 # CHECK IF TWO INTERVALS INTERSECTION
 # THIS ASSUMES THAT AN INTERVAL THAT STARTS AFTER ONE ENDS AT THE SAME TIME IS OKAY
-def checkIntersection(intervalA: Interval, intervalB: Interval):
+def checkIntersection(intervalA: Interval, intervalB: Interval) -> None:
     if (intervalA.end > intervalB.start):
         print("There is an intersection between these two intervals. Interval A crosses Interval B.")
     elif (intervalB.end > intervalA.start):
@@ -201,7 +222,7 @@ class Solution:
 # ========== ADD TEST CASES AS NEEDED BELOW ========================================================================= #
 def main():
     solution = Solution()
-    print("Delete this line after you read this.")
+    print("Find and delete this line.")
 
 
 # ========== TEST CASE ONE ========================================================================================== #
