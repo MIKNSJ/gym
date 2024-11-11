@@ -23,7 +23,7 @@
 # import math
 # import collections
 # import sortedcontainers
-from typing import Optional, List
+from typing import Optional, List, Dict
 #
 #
 #
@@ -84,7 +84,7 @@ def printList(head) -> None:
 # ========== TREES ================================================================================================== #
 class TreeNode:
     # SET UP A TREE NODE OBJECT
-    def __init__(self, val: Optional[int], left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None, nodes: Optional[List[Optional[int]]] = None) -> None:
+    def __init__(self, val: Optional[int] = None, left: Optional["TreeNode"] = None, right: Optional["TreeNode"] = None, nodes: Optional[List[Optional[int]]] = None) -> None:
         if val == None and nodes == None:
             self.val = 0
             self.left = left
