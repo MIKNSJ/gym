@@ -1,3 +1,5 @@
+# non-original solution
+
 class Solution:
     def buildSubTree(self, preorder: List[int], inorder: List[int], inorderMap: Dict[int, int], startIdx: int, endIdx: int) -> Optional["TreeNode"]:
         if startIdx > endIdx:
