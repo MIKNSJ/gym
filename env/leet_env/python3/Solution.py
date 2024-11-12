@@ -111,15 +111,17 @@ class TreeNode:
 
                     current = queue.pop(0)
 
-                    leftChildVal = nodes.pop(0)
-                    if (leftChildVal != None):
-                        current.left = TreeNode(leftChildVal)
-                        queue.append(current.left)
+                    if len(nodes) != 0:
+                        leftChildVal = nodes.pop(0)
+                        if (leftChildVal != None):
+                            current.left = TreeNode(leftChildVal)
+                            queue.append(current.left)
 
-                    rightChildVal = nodes.pop(0)
-                    if (rightChildVal != None):
-                        current.right = TreeNode(rightChildVal)
-                        queue.append(current.right)
+                    if len(nodes) != 0:
+                        rightChildVal = nodes.pop(0)
+                        if (rightChildVal != None):
+                            current.right = TreeNode(rightChildVal)
+                            queue.append(current.right)
 
 
 # PRINTS OUT THE TREE
