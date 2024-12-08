@@ -1,7 +1,3 @@
 # gym
 
-Included are the following:
-
-```dir=env```
-
-```LeetCode```
+So how do I do this problem again?
